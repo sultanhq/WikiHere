@@ -28,14 +28,14 @@ class WikiHereUITest: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        
+    func testLocationLabelChange() {
         let app = XCUIApplication()
         let wikiHereButton = app.buttons["wikiHere"]
-        let locationLabel = app.staticTexts["locationLabel"]
-        let result = locationLabel.label
+        let locationLabel =  app.staticTexts["locationLabel"]
+        let result = locationLabel.staticTexts
         wikiHereButton.tap()
-        XCTAssertEqual(result, "London")
+        print (result.staticTexts)
+        XCTAssert(app.staticTexts["London"].exists)
     }
     
 }

@@ -30,23 +30,30 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
                                 <state key="normal" title="WikiHere!"/>
+                                <connections>
+                                    <action selector="tappedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wiN-z6-Faa"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Dw-8o-c4V">
-                                <rect key="frame" x="84" y="28" width="153" height="21"/>
-                                <accessibility key="accessibilityConfiguration" identifier="locationLabel"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Location Yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGJ-GF-5FP">
+                                <rect key="frame" x="88" y="28" width="144" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="locationLabel">
+                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7Dw-8o-c4V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="agg-d6-g2K"/>
                             <constraint firstItem="eT4-zp-GV4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="h4z-b7-jIS"/>
                             <constraint firstItem="eT4-zp-GV4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pJQ-0l-rGA"/>
-                            <constraint firstItem="7Dw-8o-c4V" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="yoK-Gp-1yi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="locationLabel" destination="aGJ-GF-5FP" id="EZ1-Ki-0sI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -1,6 +1,6 @@
 //
-//  WikiHereUITests.swift
-//  WikiHereUITests
+//  WikiHereUITest.swift
+//  WikiHere
 //
 //  Created by Rob Adams on 16/02/2017.
 //  Copyright © 2017 Rob Adams. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class WikiHereUITests: XCTestCase {
+class WikiHereUITest: XCTestCase {
         
     override func setUp() {
         super.setUp()
@@ -29,8 +29,13 @@ class WikiHereUITests: XCTestCase {
     }
     
     func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let app = XCUIApplication()
+        let wikiHereButton = app.buttons["wikiHere"]
+        let locationLabel = app.staticTexts["locationLabel"]
+        let result = locationLabel.label
+        wikiHereButton.tap()
+        XCTAssertEqual(result, "London")
     }
     
 }

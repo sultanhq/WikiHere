@@ -23,7 +23,7 @@ class WikiHereTests: XCTestCase {
         super.tearDown()
     }
     
-    func testsGetLocation() {
+    func testsWikiHereButton() {
         let result = gps.Location()
         XCTAssertEqual(result, "London")
     }

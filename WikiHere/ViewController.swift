@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
+    
+    let locationManager = CLLocationManager()
 
     var gps: GPS?
     
@@ -31,7 +34,42 @@ class ViewController: UIViewController {
             print("GPS is nil")
             return
         }
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        isAuthorizedtoGetUserLocation()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        }
+    }
+    
+    //if we have no permission to access user location, then ask user for permission.
+    func isAuthorizedtoGetUserLocation() {
+        
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse     {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+
+    //this method will be called each time when a user change his location access preference.
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            print("User allowed us to access location")
+            //do whatever init activities here.
+        }
+    }
+    
+    //this method is called by the framework on         locationManager.requestLocation();
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("Did location updates is called")
+        let userLocation:CLLocation = locations[0] as CLLocation // note that locations is same as the one in the function declaration
+        print(userLocation.coordinate)
+
+        //store the user location here to firebase or somewhere
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Did location updates is called but failed getting location \(error)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,8 +79,17 @@ class ViewController: UIViewController {
 
     
     @IBAction func tappedButton(_ sender: UIButton) {
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.requestLocation()
+            
+        }
         Location = gps?.Location()
+//        locationManager.userLo
     }
-
+    
+    func locationManager(manager: CLLocationManager!,   didUpdateLocations locations: [AnyObject]!) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+    }
 }
-

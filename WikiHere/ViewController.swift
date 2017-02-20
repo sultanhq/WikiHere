@@ -11,6 +11,7 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var webView: UIWebView!
     let locationManager = CLLocationManager()
     
     var latDegrees: Double = 0.0
@@ -32,12 +33,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
         isAuthorizedtoGetUserLocation()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         }
+        
+        
     }
     
     //if we have no permission to access user location, then ask user for permission.
@@ -117,24 +119,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         let wikiUrl = "http://en.wikipedia.org/?curid=\(pageid)"
                         print("WikiUrl = \(wikiUrl)")
                         
-                        self.open(scheme: wikiUrl)
+//                        self.open(scheme: wikiUrl)
+                        
+                        let newurl = NSURL (string: wikiUrl);
+                        let urlrequest = NSURLRequest(url: newurl! as URL);
+                        self.webView.loadRequest(urlrequest as URLRequest);
+
                         
                     }
 
                 }
 
-                
-                
-                
-
             }
-        } catch {
+            
+        }
+        catch {
             print(error)
         }
     }
     task.resume()
     
-    }
+            }
     
     func open(scheme: String) {
         if let url = URL(string: scheme) {

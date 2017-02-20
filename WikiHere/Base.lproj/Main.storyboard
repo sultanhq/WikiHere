@@ -45,6 +45,11 @@
                                 <color key="textColor" red="1" green="0.49803921568627452" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="webView" translatesAutoresizingMaskIntoConstraints="NO" id="NmU-4X-Icf">
+                                <rect key="frame" x="16" y="322" width="288" height="238"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -56,6 +61,7 @@
                     </view>
                     <connections>
                         <outlet property="locationLabel" destination="aGJ-GF-5FP" id="EZ1-Ki-0sI"/>
+                        <outlet property="webView" destination="NmU-4X-Icf" id="34h-YU-H2C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -13,8 +13,6 @@
 		D46472C51E55C07600740ED1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46472C31E55C07600740ED1 /* Main.storyboard */; };
 		D46472C71E55C07600740ED1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D46472C61E55C07600740ED1 /* Assets.xcassets */; };
 		D46472CA1E55C07600740ED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46472C81E55C07600740ED1 /* LaunchScreen.storyboard */; };
-		D46472D51E55C07600740ED1 /* WikiHereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46472D41E55C07600740ED1 /* WikiHereTests.swift */; };
-		D46472EF1E55C14800740ED1 /* GPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46472EE1E55C14800740ED1 /* GPS.swift */; };
 		D46472F31E55CD1200740ED1 /* WikiHereUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46472F21E55CD1200740ED1 /* WikiHereUITest.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,11 +43,9 @@
 		D46472C91E55C07600740ED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D46472CB1E55C07600740ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D46472D01E55C07600740ED1 /* WikiHereTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WikiHereTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D46472D41E55C07600740ED1 /* WikiHereTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiHereTests.swift; sourceTree = "<group>"; };
 		D46472D61E55C07600740ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D46472DB1E55C07600740ED1 /* WikiHereUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WikiHereUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46472E11E55C07600740ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D46472EE1E55C14800740ED1 /* GPS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPS.swift; sourceTree = "<group>"; };
 		D46472F21E55CD1200740ED1 /* WikiHereUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WikiHereUITest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,7 +113,6 @@
 				D46472C61E55C07600740ED1 /* Assets.xcassets */,
 				D46472C81E55C07600740ED1 /* LaunchScreen.storyboard */,
 				D46472CB1E55C07600740ED1 /* Info.plist */,
-				D46472EE1E55C14800740ED1 /* GPS.swift */,
 			);
 			path = WikiHere;
 			sourceTree = "<group>";
@@ -125,7 +120,6 @@
 		D46472D31E55C07600740ED1 /* WikiHereTests */ = {
 			isa = PBXGroup;
 			children = (
-				D46472D41E55C07600740ED1 /* WikiHereTests.swift */,
 				D46472D61E55C07600740ED1 /* Info.plist */,
 			);
 			path = WikiHereTests;
@@ -280,7 +274,6 @@
 			files = (
 				D46472C21E55C07600740ED1 /* ViewController.swift in Sources */,
 				D46472C01E55C07600740ED1 /* AppDelegate.swift in Sources */,
-				D46472EF1E55C14800740ED1 /* GPS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +281,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D46472D51E55C07600740ED1 /* WikiHereTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

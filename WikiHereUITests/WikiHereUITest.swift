@@ -35,7 +35,12 @@ class WikiHereUITest: XCTestCase {
         let result = locationLabel.staticTexts
         wikiHereButton.tap()
         print (result.staticTexts)
-        XCTAssert(app.staticTexts["London"].exists)
+        XCTAssert(app.staticTexts["Getting Location"].exists)
     }
     
+//    func testsGetLocationFromVC() {
+//        
+//        XCTAssertEqual(location, ")
+//    }
+
 }

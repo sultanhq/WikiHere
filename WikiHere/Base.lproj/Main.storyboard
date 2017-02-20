@@ -22,31 +22,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eT4-zp-GV4">
-                                <rect key="frame" x="99" y="263" width="122" height="42"/>
-                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="85" y="263" width="150" height="42"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration" identifier="wikiHere"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="122" id="t6i-V4-lfX"/>
+                                    <constraint firstAttribute="width" constant="150" id="t6i-V4-lfX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
-                                <state key="normal" title="WikiHere!"/>
+                                <state key="normal" title="WikiHere!">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="tappedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wiN-z6-Faa"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Location Yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGJ-GF-5FP">
-                                <rect key="frame" x="88" y="28" width="144" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Location Yet" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGJ-GF-5FP">
+                                <rect key="frame" x="94.5" y="28" width="131" height="20.5"/>
                                 <accessibility key="accessibilityConfiguration" identifier="locationLabel">
                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                 </accessibility>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="0.49803921568627452" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="aGJ-GF-5FP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SHi-61-XBX"/>
+                            <constraint firstItem="aGJ-GF-5FP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="cfd-uV-WuH"/>
                             <constraint firstItem="eT4-zp-GV4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="h4z-b7-jIS"/>
                             <constraint firstItem="eT4-zp-GV4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pJQ-0l-rGA"/>
                         </constraints>

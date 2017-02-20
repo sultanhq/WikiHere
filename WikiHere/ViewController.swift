@@ -12,8 +12,9 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
-
-    var gps: GPS?
+    
+    var latDegrees: Double = 0.0
+    var longDegrees: Double = 0.0
     
     var Location: String? {
         didSet {
@@ -22,6 +23,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 return
             }
             locationLabel.text = checkedLocation
+            getJSON()
+            
         }
     }
     
@@ -29,14 +32,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        gps = GPS()
-        guard let checkedGPS = gps else {
-            print("GPS is nil")
-            return
-        }
-        
+                
         isAuthorizedtoGetUserLocation()
-        
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -45,36 +42,32 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     //if we have no permission to access user location, then ask user for permission.
     func isAuthorizedtoGetUserLocation() {
-        
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse     {
             locationManager.requestWhenInUseAuthorization()
         }
     }
 
-    //this method will be called each time when a user change his location access preference.
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             print("User allowed us to access location")
-            //do whatever init activities here.
         }
     }
     
-    //this method is called by the framework on         locationManager.requestLocation();
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Did location updates is called")
-        let userLocation:CLLocation = locations[0] as CLLocation // note that locations is same as the one in the function declaration
-        print(userLocation.coordinate)
-
-        //store the user location here to firebase or somewhere
+        print("Requested location update")
+        let userLocation:CLLocation = locations[0] as CLLocation
+            latDegrees = userLocation.coordinate.latitude
+            longDegrees = userLocation.coordinate.longitude
+            Location = ("Lat: \(userLocation.coordinate.latitude) \n Lon: \(userLocation.coordinate.longitude)")
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Did location updates is called but failed getting location \(error)")
+        print("Requested location update but failed getting location \(error)")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     
@@ -82,14 +75,61 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestLocation()
-            
+            Location = "Getting Location..."
         }
-        Location = gps?.Location()
-//        locationManager.userLo
+    
+    
     }
     
-    func locationManager(manager: CLLocationManager!,   didUpdateLocations locations: [AnyObject]!) {
-        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
+    func getJSON() {
+        
+    let myUrl = URL(string: "https://en.wikipedia.org/w/api.php");
+    
+    var request = URLRequest(url:myUrl!)
+       
+    request.httpMethod = "POST"// Compose a query string
+    
+    let postString = "action=query&list=geosearch&gscoord=\(latDegrees)%7C\(longDegrees)&gsradius=10000&gslimit=10&format=json";
+    
+    request.httpBody = postString.data(using: String.Encoding.utf8);
+    
+    let task = URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+        
+        if error != nil
+        {
+            print("error=\(error)")
+            return
+        }
+        
+        do {
+            let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+            
+            if let parseJSON = json {
+                
+                let queryString = parseJSON["query"] as? NSDictionary
+                
+                if let resultDict = queryString?["geosearch"] as? NSArray {
+                    
+                    let firstItem = resultDict[0] as? NSDictionary
+                    
+                    let pageid = (firstItem!["pageid"] as? Int)!
+                    if pageid != 40678171 {
+                        let wikiUrl = "https://en.wikipedia.org/?curid=\(pageid)"
+                        print("WikiUrl  \(wikiUrl)")
+                    }
+
+                }
+
+                
+                
+                
+
+            }
+        } catch {
+            print(error)
+        }
+    }
+    task.resume()
+    
     }
 }

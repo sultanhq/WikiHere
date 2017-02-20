@@ -114,8 +114,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     
                     let pageid = (firstItem!["pageid"] as? Int)!
                     if pageid != 40678171 {
-                        let wikiUrl = "https://en.wikipedia.org/?curid=\(pageid)"
-                        print("WikiUrl  \(wikiUrl)")
+                        let wikiUrl = "http://en.wikipedia.org/?curid=\(pageid)"
+                        print("WikiUrl = \(wikiUrl)")
+                        
+                        self.open(scheme: wikiUrl)
+                        
                     }
 
                 }
@@ -131,5 +134,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     task.resume()
     
+    }
+    
+    func open(scheme: String) {
+        if let url = URL(string: scheme) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:],
+                                          completionHandler: {
+                                            (success) in
+                                            print("Open \(scheme): \(success)")
+                })
+            } else {
+                let success = UIApplication.shared.openURL(url)
+                print("Open \(scheme): \(success)")
+            }
+        }
     }
 }
